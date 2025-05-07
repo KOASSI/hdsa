@@ -51,3 +51,39 @@ console.log('Listening on 127.0.0.1:3000');
 
 // run with `node server.mjs`
 
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const header = document.querySelector('header');
+
+    // Créer le bouton burger si non présent
+    if (!menuToggle) {
+        const burger = document.createElement('div');
+        burger.className = 'menu-toggle';
+        burger.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
+        burger.id = 'mobile-menu';
+        header.querySelector('nav').appendChild(burger);
+    }
+
+    // Gestion du clic sur le burger
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        
+        // Empêche le défilement lorsque le menu est ouvert
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Fermer le menu quand on clique sur un lien
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            document.querySelector('.menu-toggle').classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+});
