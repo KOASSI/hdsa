@@ -2,58 +2,53 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Formulaire Cabinet d'Avocat</title>
   <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo"><img src="images/cav.png" alt=""></div>
+            <div class="logo"><img src="images/cav.png" alt="Logo du cabinet"></div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
             <ul class="nav-links">
               <li><a href="index.html">Accueil</a></li>
               <li><a href="services.html">Nos services</a></li>
               <li><a href="propos.html">À propos</a></li>
-             
               <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
-  <div class="form-container">
-    <h1 class="form-title">Contactez-nous</h1>
-    <form id="contact-form">
-      <div class="form-group">
-        <input type="text" id="name" name="name" required>
-        <label for="name">Nom complet</label>
-      </div>
-      <div class="form-group">
-        <input type="email" id="email" name="email" required>
-        <label for="email">Adresse email</label>
-      </div>
-      <div class="form-group">
-        <input type="tel" id="phone" name="phone" required>
-        <label for="phone">Numéro de téléphone</label>
-      </div>
-      <div class="form-group">
-        <textarea id="message" name="message" rows="5" required></textarea>
-        <label for="message">Votre message</label>
-      </div>
-      <button type="submit">Envoyer</button>
-    </form>
-  </div>
-  <script>
-    document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
-      input.addEventListener('click', function() {
-        const label = this.previousElementSibling;
-        if (this.value === '') {
-          label.style.top = '10px';
-          label.style.left = '10px';
-          label.style.fontSize = '16px';
-          label.style.color = '#999';
-        }
-      });
-    });
-  </script>
+  
+  <main class="main-content">
+    <div class="form-container">
+      <h1 class="form-title">Contactez-nous</h1>
+      <form id="contact-form">
+        <div class="form-group">
+          <input type="text" id="name" name="name" required>
+          <label for="name">Nom complet</label>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" required>
+          <label for="email">Adresse email</label>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="phone" name="phone" required>
+          <label for="phone">Numéro de téléphone</label>
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" rows="5" required></textarea>
+          <label for="message">Votre message</label>
+        </div>
+        <button type="submit" class="submit-btn">Envoyer</button>
+      </form>
+    </div>
+  </main>
+
   <script src="javascript/contact.js"></script>
 </body>
 </html>
