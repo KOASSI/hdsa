@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hadassa</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+   <!-- En-tête -->
+   <header>
+    <nav>
+        <div class="logo"><img src="images/cav.png" alt=""></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Nos services</a></li>
+            <li><a href="propos.html">À propos</a></li>
+           
+            <li><a href="contact.html">Contact</a></li>
+       
+        </ul>
+    </nav>
+      
+    </nav>
+   </header>
+
+   <!-- Section Accueil -->
+   <div class="carousel">
+       <div class="carousel-images">
+           <img src="images/ju.jpg" class="carousel-image ">
+           <img src="images/jur.jpg" class="carousel-image ">
+           <img src="images/juri.jpg" class="carousel-image ">
+       </div>
+       <button class="carousel-button prev" aria-label="Précédent">&#10094;</button>
+       <button class="carousel-button next" aria-label="Suivant">&#10095;</button>
+       <div class="hero">
+           <h1>CONSEIL JURIDIQUE</h1>
+           <p>Découvrez notre univers</p>
+         
+       </div>
+   </div>
+
+   <!-- Section À propos -->
+   <section id="apropos" class="about">
+       <h2 class="fr">À propos</h2>
+       <h2 class="en" style="display: none;">About</h2>
+       <p class="fr">Je suis un avocat très expérimenté...<br>Pourquoi recourir à un avocat<br>Sécurité juridique – Compétence – Efficacité – Dévouement – Garantie des droits – Défense – Écoute – Confidentialité</p>
+       <p class="en" style="display: none;">I am a highly experienced lawyer...<br>Why hire a lawyer<br>Legal security – Competence – Efficiency – Dedication – Guarantee of rights – Defense – Listening – Confidentiality</p>
+   </section>
+
+   <!-- Section Services -->
+   <section id="services" class="services">
+       <h2>HORAIRES</h2>
+       <div class="service-grid">
+           <div class="service-item">7H00-12H00</div>
+           <div class="service-item"> Lien</div>
+           <div class="service-item">14H30-17H00</div>
+       </div>
+   </section>
+
+   <!-- Pied de page -->
+   <footer>
+       <div class="footer-container">
+           <div class="footer-section">
+               
+               <img src="images/cav.png" alt="" class="logo " style="width: 40%;" height: 50px;;>
+               <p>Votre partenaire juridique de confiance, offrant des conseils et une représentation de qualité.</p>
+           </div>
+           <div class="footer-section">
+               <h3>Services</h3>
+               <ul>
+                   <li>Consultation juridique</li>
+                   <li>Rédaction de contrats</li>
+                   <li>Litiges</li>
+               </ul>
+           </div>
+           <div class="footer-section">
+               <h3>Suivez-nous</h3>
+               <div class="social-media">
+                <a href="https://fr-fr.facebook.com/"><img src="images/facebook.png"></a>
+                <a href="https://x.com/"><img src="images/vr.jpg" alt=""></a>
+                <a href="https://fr.linkedin.com/"><img src="images/linkedin.png" alt=""></a>
+               </div>
+           </div>
+       </div>
+     
+   </footer>
+
+   <a href="#" class="scroll-to-top" id="scrollToTop">&#8593;</a>
+
+   <script src="javascript/java.js"></script>
+   <script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.carousel-image');
+    const totalImages = images.length;
+
+    function showNextImage() {
+        currentIndex = (currentIndex + 1) % totalImages; // Passe à la prochaine image
+        const offset = -currentIndex * 100; // Calcule le décalage
+        document.querySelector('.carousel-images').style.transform = `translateX(${offset}vw)`;
+    }
+
+    setInterval(showNextImage, 10000); // Change d'image toutes les 30 secondes
+</script>
+
+   
+</body>
+</html>
+</html>
+   
