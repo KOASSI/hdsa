@@ -1,89 +1,35 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const scrollToTopButton = document.querySelector('.scroll-to-top');
-  
-    // Afficher ou masquer le bouton en fonction du défilement
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 300) { // Afficher le bouton après 300px de défilement
-        scrollToTopButton.classList.add('visible');
-      } else {
-        scrollToTopButton.classList.remove('visible');
-      }
-    });
-  
-    // Faire défiler la page vers le haut lorsque le bouton est cliqué
-    scrollToTopButton.addEventListener('click', function () {
-      window.scrollTo({
-        top: 0, // Défile jusqu'au haut de la page
-        behavior: 'smooth' // Défilement fluide
-      });
-    });
-  });
-  
-  const scrollToTopButton = document.getElementById('scrollToTop');
+// Menu responsive
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.querySelector('.nav-links');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      scrollToTopButton.style.display = 'flex'; // Montre le bouton quand on défile
-    } else {
-      scrollToTopButton.style.display = 'none'; // Cache le bouton en haut de la page
-    }
-  });
+mobileMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
 
-  scrollToTopButton.addEventListener('click', (e) => {
+// Gestion du formulaire
+const contactForm = document.getElementById('contact-form');
+
+contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth' // Défilement en douceur
-    });
-  });
-// server.mjs
-import { createServer } from 'node:http';
-
-const server = createServer((req, res) => {
-res.writeHead(200, { 'Content-Type': 'text/plain' });
-res.end('Hello World!\n');
+    alert('Merci pour votre message. Nous vous contacterons bientôt.');
+    contactForm.reset();
 });
+const images = document.querySelectorAll('.carousel-image');
+let currentIndex = 0;
 
-// starts a simple http server locally on port 3000
-server.listen(3000, '127.0.0.1', () => {
-console.log('Listening on 127.0.0.1:3000');
-});
+function showNextImage() {
+    // Cache toutes les images
+    images.forEach(img => img.classList.remove('active'));
 
-// run with `node server.mjs`
+    // Affiche l'image suivante
+    images[currentIndex].classList.add('active');
 
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const header = document.querySelector('header');
+    // Passe à l'image suivante
+    currentIndex = (currentIndex + 1) % images.length;
+}
 
-    // Créer le bouton burger si non présent
-    if (!menuToggle) {
-        const burger = document.createElement('div');
-        burger.className = 'menu-toggle';
-        burger.innerHTML = '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
-        burger.id = 'mobile-menu';
-        header.querySelector('nav').appendChild(burger);
-    }
+// Affiche la première image immédiatement
+showNextImage();
 
-    // Gestion du clic sur le burger
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        
-        // Empêche le défilement lorsque le menu est ouvert
-        if (navLinks.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-    });
-
-    // Fermer le menu quand on clique sur un lien
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            document.querySelector('.menu-toggle').classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-});
+// Change d'image toutes les 5 secondes
+setInterval(showNextImage, 5000);
